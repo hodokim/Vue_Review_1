@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    안녕 뷰
+    <router-view></router-view>
   </div>
 </template>
 
