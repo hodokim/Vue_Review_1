@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div v-for="news in news" :key="news">{{ news.title }}</div>
+    <div v-for="item in news" :key="item.id">{{ item.title }}</div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import {fetchNewsList} from '../api/index.js';
+
 export default {
   data() {
     return {
@@ -14,11 +15,9 @@ export default {
   },
 
   created() {
-    axios.get('https://api.hnpwa.com/v0/news/1.json')
-    .then( res => {
-      this.news = res.data;
-    })
-    .catch()
+    fetchNewsList()
+    .then( res => this.news = res.data)
+    .catch( err => console.log(err))
   }
 
 }

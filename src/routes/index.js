@@ -23,11 +23,11 @@ const router = new VueRouter({
         },
         {
             path : '/ask',
-            component : JobsView,
+            component : AskView,
         },
         {
             path: '/jobs',
-            component: AskView,
+            component: JobsView,
         },
         {
             path: '/item',
