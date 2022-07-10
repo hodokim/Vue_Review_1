@@ -1,23 +1,25 @@
 <template>
   <div>
-    <div v-for="item in jobs" :key="item.id">{{ item.title }}</div>
+    <div v-for="item in fetchedJobs" :key="item.id">{{ item.title }}</div>
   </div>
 </template>
 
 <script>
-import {fetchJobsList} from '../api/index.js';
+import { mapGetters} from 'vuex';
 
 export default {
-  data() {
-    return {
-      jobs: []
-    }
-  },
+  computed: {
+    ...mapGetters([
+      'fetchedJobs'
+    ])
 
+    // mapState를 활용한 방법
+    // ...mapState({
+    //   jobs: state => state.jobs
+    // })
+  },
   created() {
-    fetchJobsList()
-    .then( res => this.jobs = res.data)
-    .catch( err => console.log(err))
+    this.$store.dispatch('FETCH_JOBS');
   }
 
 }
