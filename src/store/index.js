@@ -15,6 +15,9 @@ export const store = new Vuex.Store({
     getters :{
         fetchedJobs(state){
             return state.jobs;
+        },
+        fetchedItem(state){
+            return state.item;
         }
     },
     actions,
