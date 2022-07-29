@@ -11,33 +11,13 @@
             {{ item.title }}
           </a>
           </p>
-          <small>
+          <small class="link-text">
             by 
             <router-link :to="`/user/${item.user}`"> {{item.user}} </router-link>
           </small>
         </div>
-        
-        
-        
-        <!-- <a :href="item.url">
-          {{ item.title }}
-        </a>
-        <small>{{ item.time_ago }} by
-          <router-link :to="`/user/${item.user}`">
-            {{ item.user }}
-          </router-link>
-        </small>-->
       </li>
     </ul> 
-
-    <!-- <p v-for="item in this.$store.state.news" :key="item.id">
-      <a :href="item.url">
-        {{ item.title }}
-      </a>
-      <small>{{item.time_ago}} by 
-      <router-link :to="`/user/${item.user}`"> {{item.user}} </router-link>
-      </small>
-    </p> -->
   </div>
 </template>
 
@@ -72,6 +52,6 @@ export default {
   color: #42b883;
 }
 .link-text {
-  
+  color: #828282;
 }
 </style>
