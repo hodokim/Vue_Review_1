@@ -1,45 +1,42 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="item in fetchedJobs" :key="item.id" class="post">
+      <li v-for="item in this.$store.state.news" :key="item.id" class="post">
         <div class="points">
-          {{ item.points || 0 }}
+          {{ item.points }}
         </div>
         <div>
           <p class="news-title"> 
-          <a :href="item.url" >
+          <a :href="item.url">
             {{ item.title }}
           </a>
           </p>
           <small>
-            {{item.time_ago}} by 
-            <a :href="item.url">{{item.domain}} </a>
+            by 
+            <router-link :to="`/user/${item.user}`"> {{item.user}} </router-link>
           </small>
         </div>
       </li>
-    </ul>    
+    </ul> 
   </div>
 </template>
 
 <script>
-import { mapGetters} from 'vuex';
-
 export default {
-  computed: {
-    ...mapGetters([
-      'fetchedJobs'
-    ])
-
-    // mapState를 활용한 방법
-    // ...mapState({
-    //   jobs: state => state.jobs
-    // })
-  },
   created() {
-    this.$store.dispatch('FETCH_JOBS');
+    const name = this.$route.name;
+    if (name === 'news'){
+        this.$route.dispatch("FETCH_NEWS");
+    } else if (name === 'ask') {
+        this.$route.dispatch("FETCH_ASK");
+    } else if (name === 'jobs') {
+        this.$route.dispatch("FETCH_JOBS");
+    }
+  },
+  computed : {
+    
   }
-
-}
+};
 </script>
 
 <style scoped>
@@ -64,5 +61,7 @@ export default {
   justify-content: center;
   color: #42b883;
 }
-
+.link-text {
+  color: #828282;
+}
 </style>
