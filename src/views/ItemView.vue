@@ -15,9 +15,7 @@
       <h2>{{ fetchedItem.title }}</h2>
     </section>
     <section>
-        <div v-html="fetchedItem.content ">
-
-        </div>
+        <div v-html="fetchedItem.content "></div>
     </section>
   </div>
 </template>
